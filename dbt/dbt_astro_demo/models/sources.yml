@@ -1,0 +1,10 @@
+version: 2
+
+# https://docs.getdbt.com/docs/build/sources
+sources:
+  - name: RAW
+    database: TEST_DBT_DB
+    schema: RAW
+    tables:
+      - name: SRC_CUSTOMER_ORDERS
+        description: "Customer Orders Data"

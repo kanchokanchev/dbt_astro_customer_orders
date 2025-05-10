@@ -1,0 +1,37 @@
+---
+version: "3.9"
+
+services:
+  dbt-astro-svc:
+    image: kkanchevgemseek/python_3_10_custom_dbt
+    container_name: ${DOCKER_CONTAINER_NAME_DBT_SVC}
+    restart: unless-stopped
+    networks:
+      - service_network
+    environment:
+      - SF_ACCOUNT=${SF_ACCOUNT}
+      - SF_USER=${SF_USER}
+      - SF_PASSWORD=${SF_PASSWORD}
+      - SF_SERVICE_USER_KEY=${SF_SERVICE_USER_KEY}
+      - SF_PASSWORD=${SF_PASSWORD}
+      - SF_ROLE=${SF_ROLE}
+      - SF_WAREHOUSE=${SF_WAREHOUSE}
+      - SF_DATABASE=${SF_DATABASE}
+      - SF_SCHEMA=${SF_SCHEMA}
+      - DBT_PROFILES_DIR=${DBT_PROFILES_DIR}
+    volumes:
+      - ${LOCAL_MOUNT_DBT}:/opt/project/dbt_astro/dbt
+    command: 
+      - bash
+      - -c
+      - |
+        cd /opt/project;
+        tail -f /dev/null;
+
+networks:
+  service_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${DOCKER_SERVICE_NETWORK_SUBNET}
+    name: ${DOCKER_SERVICE_NETWORK_NAME}

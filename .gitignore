@@ -136,3 +136,12 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+# Ignore SSH keys
+*.b64
+*.p8
+*.pem
+
+# Ignore any data files
+*.csv

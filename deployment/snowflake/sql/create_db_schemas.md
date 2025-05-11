@@ -3,7 +3,7 @@
 ## 1. Specify Snowflake Role and Warehouse
 ```sql
 USE ROLE SQL_DEV;
-USE WAREHOUSE COMPUTE_XS;
+USE WAREHOUSE COMPUTE_WH;
 ```
 
 ## 2. Create Snowflake Database and Schemas
@@ -24,7 +24,7 @@ Below is the complete Snowflake SQL script for reference:
 ```sql
 -- 1. Specify Snowflake Role and Warehouse
 USE ROLE SQL_DEV;
-USE WAREHOUSE COMPUTE_XS;
+USE WAREHOUSE COMPUTE_WH;
 
 -- 2. Create Snowflake Database and Schemas
 CREATE DATABASE IF NOT EXISTS TEST_DBT_DB;

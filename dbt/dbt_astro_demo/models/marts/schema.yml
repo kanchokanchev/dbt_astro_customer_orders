@@ -15,9 +15,15 @@ models:
           - unique
 
       - name: customer_name
-        data_type: varchar
+        data_type: varchar(100)
         constraints:
           - type: not_null
+
+      - name: customer_email
+        data_type: varchar(50)
+      
+      - name: customer_phone
+        data_type: varchar(50)
 
 
   - name: dim_product
@@ -27,14 +33,14 @@ models:
         enforced: true
     columns:
       - name: product_id
-        data_type: varchar
+        data_type: varchar(10)
         constraints:
           - type: not_null
         tests:
           - unique
 
       - name: product_name
-        data_type: varchar
+        data_type: varchar(30)
         constraints:
           - type: not_null
         tests:
@@ -63,7 +69,7 @@ models:
           - type: not_null
 
       - name: order_total
-        data_type: number(5, 2)
+        data_type: integer
         constraints:
           - type: not_null
   
@@ -87,7 +93,7 @@ models:
           - type: not_null
 
       - name: product_id
-        data_type: varchar
+        data_type: varchar(10)
         constraints:
           - type: not_null
 

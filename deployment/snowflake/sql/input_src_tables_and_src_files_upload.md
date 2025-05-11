@@ -3,7 +3,7 @@
 ## 1. Specify Snowflake Role and Warehouse
 ```sql
 USE ROLE SQL_DEV;
-USE WAREHOUSE COMPUTE_XS;
+USE WAREHOUSE COMPUTE_WH;
 ```
 
 ## 2. Specify Snowflake Database and Schema
@@ -73,7 +73,7 @@ Below is the complete Snowflake SQL script for reference:
 ```sql
 -- 1. Specify Snowflake Role and Warehouse
 USE ROLE SQL_DEV;
-USE WAREHOUSE COMPUTE_XS;
+USE WAREHOUSE COMPUTE_WH;
 
 -- 2. Specify Snowflake Database and Schema
 USE DATABASE TEST_DBT_DB;

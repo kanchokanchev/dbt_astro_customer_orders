@@ -16,6 +16,7 @@ RUN pip install --no-cache-dir \
     dbt-snowflake \
     pandas \
     requests \
+    dotenv \
     boto3 \
     snowflake-connector-python[pandas]
 

@@ -9,6 +9,8 @@ services:
     networks:
       - service_network
     environment:
+      - CSV_DATA_URL=${CSV_DATA_URL}
+
       - SF_ACCOUNT=${SF_ACCOUNT}
       - SF_USER=${SF_USER}
       - SF_PASSWORD=${SF_PASSWORD}
@@ -18,6 +20,8 @@ services:
       - SF_WAREHOUSE=${SF_WAREHOUSE}
       - SF_DATABASE=${SF_DATABASE}
       - SF_SCHEMA=${SF_SCHEMA}
+      - SF_RAW_SCHEMA=${SF_RAW_SCHEMA}
+      - SF_RAW_DB_TABLE=${SF_RAW_DB_TABLE}
       - DBT_PROFILES_DIR=${DBT_PROFILES_DIR}
     volumes:
       - ${LOCAL_MOUNT_DBT}:/opt/project/dbt_astro/dbt

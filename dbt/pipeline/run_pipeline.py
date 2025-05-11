@@ -14,4 +14,4 @@ if __name__ == '__main__':
     load_to_snowflake(config, df, conn)
 
     # 4. Run dbt pipeline
-    run_dbt()
+    run_dbt(dbt_project_directory='dbt_astro/dbt/dbt_astro_demo')

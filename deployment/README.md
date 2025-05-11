@@ -31,11 +31,15 @@ WORKSPACE_ROOT_DIR := ../
 
 # Airflow (Astro) and dbt directory paths
 ASTRO_ROOT_DIR := $(WORKSPACE_ROOT_DIR)/airflow
+ASTRO_INCLUDE_DIR := $(ASTRO_ROOT_DIR)/include
+
 DBT_ROOT_DIR := $(WORKSPACE_ROOT_DIR)/dbt
+PIPELINE_DIR := $(DBT_ROOT_DIR)/pipeline
 
 # Path to the dbt project and its profiles file
 DBT_PROJECT_DIR := $(DBT_ROOT_DIR)/dbt_astro_demo
 PROFILES_FILE := $(DBT_ROOT_DIR)/profiles.yml
+PIPELINE_TASKS_FILE := $(PIPELINE_DIR)/pipeline_tasks.py
 
 # Mount path used during Astro Cloud deployment
 MOUNT_PATH := /usr/local/airflow/dbt
@@ -46,7 +50,7 @@ MOUNT_PATH := /usr/local/airflow/dbt
 
 # Deploy the local dev environment and prepare dbt profile
 .PHONY: deploy-dev
-deploy-dev: sync-profiles dbt-deploy-dev
+deploy-dev: sync-profiles sync-pipeline-tasks dbt-deploy-dev
 
 # Destroy the local Astro dev environment
 .PHONY: destroy-dev
@@ -54,7 +58,7 @@ destroy-dev: dbt-destroy-dev
 
 # Deploy to Astro Cloud (after syncing profile)
 .PHONY: deploy-cloud
-deploy-cloud: sync-profiles dbt-deploy-cloud
+deploy-cloud: sync-profiles sync-pipeline-tasks dbt-deploy-cloud
 
 # ========================================
 # 🔁 Utilities
@@ -66,6 +70,13 @@ sync-profiles:
 	@echo "🔄 Syncing profiles.yml into dbt project directory..."
 	cp $(PROFILES_FILE) $(DBT_PROJECT_DIR)/profiles.yml
 	@echo "✅ profiles.yml copied to $(DBT_PROJECT_DIR)/profiles.yml"
+
+# Copy the pipeline_tasks.py into the airflow/include directory
+.PHONY: sync-pipeline-tasks
+sync-pipeline-tasks:
+	@echo "🔄 Syncing profiles.yml into dbt project directory..."
+	cp $(PIPELINE_TASKS_FILE) $(ASTRO_INCLUDE_DIR)/pipeline_tasks.py
+	@echo "✅ pipeline_tasks.py copied to $(ASTRO_INCLUDE_DIR)/pipeline_tasks.py"
 
 # ========================================
 # 🚀 Astro Local Development Commands

@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+  scheduler:
+    volumes:
+      - /home/local/DIR/kancho.kanchev/development/dbt/dbt_astro_customer_orders/dbt/dbt_astro_demo:/usr/local/airflow/dbt:rw
+
+  webserver:
+    volumes:
+      - /home/local/DIR/kancho.kanchev/development/dbt/dbt_astro_customer_orders/dbt/dbt_astro_demo:/usr/local/airflow/dbt:rw
+
+  triggerer:
+    volumes:
+      - /home/local/DIR/kancho.kanchev/development/dbt/dbt_astro_customer_orders/dbt/dbt_astro_demo:/usr/local/airflow/dbt:rw

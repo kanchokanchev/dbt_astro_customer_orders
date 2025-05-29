@@ -2,7 +2,7 @@
     config(
         materialized='table',
         tags=['analytics_schema'],
-        unique_key='product_id'
+        unique_key='order_id'
     )
 }}
 
